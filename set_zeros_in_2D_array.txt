@@ -1,0 +1,44 @@
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int n=matrix.length;
+        int m=matrix[0].length;
+        int vis[][]=new int[n][m];
+
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(matrix[i][j]==0){
+                    setzero(n,m,i,j,matrix,vis);
+                }
+            }
+        }
+
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(matrix[i][j]==-1 && vis[i][j]==1){
+                    matrix[i][j]=0;
+                }
+            }
+        }
+    }
+    
+    void setzero(int n,int m,int row,int col,int matrix[][],int vis[][]){
+        for(int i=0;i<m;i++){
+            if(matrix[row][i]==0){
+                continue;
+            }
+            else{
+                matrix[row][i]=-1;
+                vis[row][i]=1;
+            }
+        }
+        for(int i=0;i<n;i++){
+            if(matrix[i][col]==0){
+                continue;
+            }
+            else{
+                matrix[i][col]=-1;
+                vis[i][col]=1;
+            }
+        }
+    }
+}
